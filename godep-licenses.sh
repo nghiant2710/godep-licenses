@@ -112,6 +112,10 @@ function parse-args() {
       REPO_PATH="$2"
       [ -z "${REPO_PATH:-}" ] && echo "Invalid path. Use --help to see the valid syntax." >&2 && exit 1
       ;;
+    -f|--project-name)
+      PROJECT_NAME="$2"
+      [ -z "${PROJECT_NAME:-}" ] && echo "Invalid project name. Use --help to see the valid syntax." >&2 && exit 1
+      ;;
     --)
       break
       ;;
@@ -233,7 +237,7 @@ function print-csv() {
 
 function print-markdown() {
   echo "Generating Markdown" >&2
-  echo "Dependency Licenses"
+  echo "$PROJECT_NAME Dependency Licenses"
   echo "-------------------"
   echo
   echo "Package | License"
